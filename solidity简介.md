@@ -30,3 +30,12 @@ Remix
 - npm install -g solc
 - solcjs编译器支持编译 Solidity源码，并输出可读的ABI和字节码
 ![alt text](./images/image.png)
+
+
+### 合约代码解读
+event Sent(address from, address to, uint amount);
+- 声明了一个“事件”(event)，它会在send 函数的最后一行触发
+- 用户可以监听区块链上正在发送的事件，而不会花费太多成本。一旦它被发出，监听该事件的listener都将收到通知
+- 所有的事件都包含了from，to和amount三个参数，可方便追踪事务
+emit Sent(msg.sender, receiver, amount);
+- 触发Sent事件，并将参数传入

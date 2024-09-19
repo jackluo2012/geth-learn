@@ -2,3 +2,6 @@ pwd.txt
 *.log
 history
 data/*
+develop/*
+*.abi
+artifacts/*

@@ -37,8 +37,18 @@
 ./geth --datadir data --networkid 15 --rpcport 8547 --ws --ws.port=8546 --http.port=8545 --rpccorsdomain "*" --port 1718 --nodiscover --nat "any" --rpcapi "eth,net,web3,personal" console 2> out.log
 
 ./geth --http --http.addr 0.0.0.0 --nodiscover --datadir data --networkid 15  --port 30303 --http.api "personal,eth,net,web3,admin,ethash,miner" --http.port 8545 --http.corsdomain "*"  --ipcdisable  --miner.gaslimit 2000000000 --allow-insecure-unlock --unlock "0xFF7490A35c8802132D922dd4D8f0D04af16F6B1A" --password ./pwd.txt  console 2>out.log
+```
 
+### 启动开发者节点
+```
+./geth --http --http.addr 0.0.0.0 --nodiscover --datadir develop --networkid 15  --port 30303 --http.api "personal,eth,net,web3,admin,ethash,miner" --http.port 8545 --http.corsdomain "*"  --ipcdisable  --miner.gaslimit 2000000000 --dev  console 2>dev.log
 
+### 测试节点
+./clef --chainid 15 --keystore ./develop/keystore newaccount
+## 转帐
+eth.sendTransaction({from:eth.accounts[0],to:"0x3d5c7e84e50340d95B643B13C1e0E008E8d1D39E",value:web3.toWei(5,'ether')})
+## 查看余额
+eth.getBalance(eth.accounts[1])
 ```
 
 
@@ -75,7 +85,7 @@ eth.getBalance(eth.accounts[0])
 
 ### 转帐
 ```bash
-eth.sendTransaction({from:eth.accounts[0],to:"0x540E61C21eE9efb85Bc74b39eaee037A10b9791b",value:web3.toWei(5,'ether')})
+eth.sendTransaction({from:eth.accounts[0],to:"0xc5CcA09f6185138D3f45E4272C4d08e5Dfb63B4b",value:web3.toWei(5,'ether')})
 miner.start()
 miner.stop()
 ```

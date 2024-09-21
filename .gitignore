@@ -5,3 +5,4 @@ data/*
 develop/*
 *.abi
 artifacts/*
+node_modules
